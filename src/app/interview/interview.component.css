@@ -1,0 +1,71 @@
+.InterviewPage {
+
+  background-image: linear-gradient(#9F9AA4, #E7CFCD, #CFD8D7, #B5C9C3, #CAB1BD);
+  width: 100%;
+  height: 100%;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding: 50px;
+  margin: auto;
+  display: block;
+
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.mat-raised-button {
+
+  margin: auto;
+  display: block;
+  width: 300px;
+  padding: 10px;
+}
+
+.tablesoverflow {
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 400px !important;
+  text-align: center;
+}
+table {
+  width: 100%;
+
+
+}
+
+table th,td {
+
+  text-align: center;
+}
+
+#addimage {
+
+  margin: auto;
+  display: block;
+}
+ img {
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: auto;
+  display: block;
+}
+
+.Pictures {
+
+  width: 50%;
+  margin: auto;
+  display: block;
+  padding: 10px;
+  height: 300px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}

@@ -1,0 +1,117 @@
+<div class="InterviewPage">
+<form class="example-form" id="interviewForm" (submit)="SubmitInterview(interviewForm)" #interviewForm="ngForm">
+  <mat-form-field class="example-full-width">
+    <input
+     matInput
+     type="text"
+     name="firstname"
+     #firstname="ngModel"
+     ngModel
+     placeholder="Firstname"
+     required>
+     <mat-error *ngIf="firstname.invalid">At least 2 letters</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput
+    type="text"
+    name="lastname"
+    #lastname="ngModel"
+    ngModel
+    placeholder="Lastname"
+    required>
+    <mat-error *ngIf="lastname.invalid">At least 2 letters</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput
+    type="text"
+    name="age"
+    #age="ngModel"
+    ngModel
+    placeholder="Age"
+    required>
+    <mat-error *ngIf="age.invalid">At least 2 numbers</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput
+    type="text"
+    name="schoolname"
+    #schoolname="ngModel"
+    ngModel
+    placeholder="Your school"
+    required>
+    <mat-error *ngIf="schoolname.invalid">At least 2 Charters</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit" color="primary">Submit</button>
+</form>
+
+<button mat-raised-button type="button" color="primary" (click)="GetAllInterviews()">Get All Interviews Data</button>
+<br>
+<a mat-raised-button type="button"  color="accent" href="../../assets/pdf-files/Ohad.pdf" download>Download PDF</a>
+<br><br>
+
+<div class="tablesoverflow" *ngIf="show">
+
+    <mat-form-field >
+        <input  matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+      </mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> Firstname </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Lastname </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="schoolname">
+          <th mat-header-cell *matHeaderCellDef> Collage name </th>
+          <td mat-cell *matCellDef="let element"> {{element.schoolname}} </td>
+        </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+
+</div>
+<br><br><br>
+<form [formGroup]="imageformGroup" enctype="multipart/form-data" >
+  <button mat-raised-button color="acceny" (click)="filePicker.click()" id="addimage" >Add image</button>
+  <input type="file" #filePicker (change)="onImagePicked($event)" style="visibility: hidden" >
+
+  <button type="button" (click)="UploadImage()" mat-raised-button color="primary">Upload the image</button>
+</form>
+<br><br>
+<div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+  <img [src]="imagePreview"  >
+</div>
+<br><br>
+<button type="button" (click)="GetAllImages()" mat-raised-button color="primary">Get All Images</button>
+<br><br>
+<div class="Pictures" *ngIf="showimages">
+<mat-accordion *ngFor="let image of imageList">
+    {{image.id}}
+  <mat-expansion-panel>
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div mat-card-avatar>
+          <img [src]="image.image" >
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+  <hr>
+</mat-accordion>
+</div>
+</div>

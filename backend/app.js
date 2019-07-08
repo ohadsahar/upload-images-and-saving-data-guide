@@ -9,17 +9,7 @@ const imagesRoute = require("./routes/images");
 const app = express();
 
 
-//writing to our database in the mongodb and is name:first
-mongoose.connect("mongodb+srv://ohad:ppd53brx!@cluster0-vw61b.mongodb.net/together?retryWrites=true",  { useNewUrlParser: true })
-.then(() =>{
 
-  console.log("Connected to server");
-
-})
-.catch(() => {
-
-  console.log("Failed");
-});
 
 
 
